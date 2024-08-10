@@ -1,18 +1,20 @@
 // Write your JavaScript code here!
+const scriptHelper = require('./scriptHelper.js');
 
-window.addEventListener("load", function() {
-    // list = document.getElementById("faultyItems");
+let formSubmission = scriptHelper.formSubmission;
 
-    // let pilot = document.querySelector("input[name=pilotName]");
-    // let copilot = document.querySelector("input[name=copilotName]");
+// let status = document.getElementById("launchStatusCheck");
+// status.style.color = "green"; Does not seem to be responding to anything in this
 
-    // let fuelLevel = document.querySelector("input[name=fuelLevel]");
-    // fuelLevel = parseInt(fuelLevel);
 
-    // let cargoLevel = document.querySelector("input[name=cargoMass]");
-    // cargoLevel = parseInt(cargoLevel);
+window.addEventListener("load", function () {
 
-    window.addEventListener("submit", formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel))
+    window.alert("test");
+    let submitButton = window.getElementById("formSubmit");
+
+    submitButton.addEventListener("click", function () {
+        formSubmission();
+    });
     
 
     let listedPlanets;
