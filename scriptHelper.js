@@ -30,7 +30,7 @@ function validateInput(testInput) {
     }
     
 }
-console.log(validateInput("10"));  //This function on it's own seems to work
+// console.log(validateInput("10"));  //This function on it's own seems to work
 
 
 // These below may need to go in other script file, not sure
@@ -45,56 +45,65 @@ console.log(validateInput("10"));  //This function on it's own seems to work
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    // list = document.getElementById("faultyItems");
+    window.addEventListener("submit", function() {
 
-    // pilot = document.querySelector("input[name=pilotName]");
-    // copilot = document.querySelector("input[name=copilotName]");
-
-    // fuelLevel = document.querySelector("input[name=fuelLevel]");
-    // fuelLevel = parseInt(fuelLevel);
-
-    // cargoLevel = document.querySelector("input[name=cargoMass]");
-    // cargoLevel = parseInt(cargoLevel);
-    
-    if (validateInput(pilot) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(pilot) === "Is a Number") {
-        window.alert("is a number");
-    }
-    else if (validateInput(pilot) === "Not a Number") {
-
-    }
-
-    else if (validateInput(copilot) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(copilot) === "Is a Number") {
-        window.alert("is a number");
-    }
-    else if (validateInput(copilot) === "Not a Number") {
-
-    }
-
-    else if (validateInput(fuelLevel) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(fuelLevel) === "Not a Number") {
-        window.alert("Not a Number");
-    }
-    else if (validateInput(fuelLevel) === "Is a Number") {
-
-    }
-
-    else if (validateInput(cargoLevel) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(cargoLevel) === "Not a Number") {
-        window.alert("Not a Number");
-    }
-    else if (validateInput(cargoLevel) === "Is a Number") {
+        pilot = document.querySelector("input[name=pilotName]");
+        copilot = document.querySelector("input[name=copilotName]");
+        fuelLevel = document.querySelector("input[name=fuelLevel]");
+        // fuelLevel = parseInt(fuelLevel);
+        cargoLevel = document.querySelector("input[name=cargoMass]");
+        // cargoLevel = parseInt(cargoLevel);
+        list = document.getElementById("faultyItems");
         
-    }
+        if (validateInput(pilot) === "Empty") {
+            window.alert("All fields required!");
+        }
+        else if (validateInput(pilot) === "Is a Number") {
+            window.alert("is a number");
+        }
+        else if (validateInput(pilot) === "Not a Number") {
+            let pilotStatus = list.getElementById("pilotStatus") 
+            pilotStatus = `Pilot ${pilot} is ready for launch`
+        }
+    
+        else if (validateInput(copilot) === "Empty") {
+            window.alert("All fields required!");
+        }
+        else if (validateInput(copilot) === "Is a Number") {
+            window.alert("is a number");
+        }
+        else if (validateInput(copilot) === "Not a Number") {
+            let copilotStatus = list.getElementById("copilotStatus");
+            copilotStatus = `Copilot ${copilot} is ready for launch`
+        }
+    
+        else if (validateInput(fuelLevel) === "Empty") {
+            window.alert("All fields required!");
+        }
+        else if (validateInput(fuelLevel) === "Not a Number") {
+            window.alert("Not a Number");
+        }
+        else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel < 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
+            document.getElementById("launchStatus").style.color = "red";
+        }
+    // PROBABLY NEED IF STATEMENT FOR OVER 10000 HERE
+        else if (validateInput(cargoLevel) === "Empty") {
+            window.alert("All fields required!");
+        }
+        else if (validateInput(cargoLevel) === "Not a Number") {
+            window.alert("Not a Number");
+        }
+        else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel > 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+            document.getElementById("launchStatus").style.color = "red";
+        }
+        //PROBABLY NEED IF STATEMENT FOR LESS THAN 10000 HERE
+    })
 }
 
 
