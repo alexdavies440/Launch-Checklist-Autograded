@@ -1,7 +1,9 @@
 // Write your JavaScript code here!
-const scriptHelper = require('./scriptHelper.js');
+console.log("script.js loaded");
 
-let formSubmission = scriptHelper.formSubmission;
+// const scriptHelper = require('./scriptHelper.js');
+
+// let formSubmission = scriptHelper.formSubmission;
 
 // let status = document.getElementById("launchStatusCheck");
 // status.style.color = "green"; Does not seem to be responding to anything in this
@@ -9,14 +11,19 @@ let formSubmission = scriptHelper.formSubmission;
 
 window.addEventListener("load", function () {
 
-    window.alert("test");
-    let submitButton = window.getElementById("formSubmit");
-
-    submitButton.addEventListener("click", function () {
+    // window.alert("test"); //This did something
+    // let submitButton = window.getElementById("formSubmit"); commenting this out allows things below it to work
+    //window.alert("test"); //This did not do anything?
+    
+    let form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+        // console.log("test submit");
         formSubmission();
+        //document.body.style.backgroundColor = "red"; //Submit is working to change background red, formsubmission function is not yet
+        event.preventDefault();
+
     });
     
-
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse;
