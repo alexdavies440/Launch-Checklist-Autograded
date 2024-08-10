@@ -17,28 +17,79 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     */
  }
  
- function validateInput(testInput) {
-    window.addEventListener("load", function() {
-        let form = document.querySelector("form");
-        form.addEventListener("submit", function(event) {
-            let pilotName = document.querySelector("input[name=pilotName]");
-            let copilotName = document.querySelector("input[name=copilotName]");
-            let fuelLevel = document.querySelector("input[name=fuelLevel]");
-            let cargoMass = document.querySelector("input[name=cargoMass]");
+function validateInput(testInput) {
 
-            if (pilotName.value === "") {
-                console.log("All fields required!");
-            }
-        })
-    })
-   
+let result;
+
+    if (testInput === "") {
+        return "Empty";
+    }
+    else if (typeof(testInput) === "number") {
+        return "Is a number";
+    }
+    else if (isNaN(testInput)) {
+        return "Is not a number";
+    }
+}
+// console.log(validateInput(""));  This function on it's own seems to work
+
+
+// These below may need to go in other script file, not sure
+
+// pilot = document.querySelector("input[name=pilotName]");
+// copilot = document.querySelector("input[name=copilotName]");
+// fuelLevel = document.querySelector("input[name=fuelLevel]");
+// fuelLevel = parseInt(fuelLevel);
+// cargoLevel = document.querySelector("input[name=cargoMass]");
+// cargoLevel = parseInt(cargoLevel);
+
+
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
- }
- 
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
- }
- 
+    if (validateInput(pilot) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(pilot) === "Is a Number") {
+        window.alert("is a number");
+    }
+    else if (validateInput(pilot) === "Not a Number") {
+
+    }
+
+    else if (validateInput(copilot) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(copilot) === "Is a number") {
+        window.alert("is a number");
+    }
+    else if (validateInput(copilot) === "Is not a number") {
+
+    }
+
+    else if (validateInput(fuelLevel) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(fuelLevel) === "Is not a number") {
+        window.alert("Is not a number");
+    }
+    else if (validateInput(fuelLevel) === "Is a number") {
+
+    }
+
+    else if (validateInput(cargoLevel) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(cargoLevel) === "Is not a number") {
+        window.alert("Is not a number");
+    }
+    else if (validateInput(cargoLevel) === "Is a number") {
+        
+    }
+}
+
+
+
  async function myFetch() {
      let planetsReturned;
  
