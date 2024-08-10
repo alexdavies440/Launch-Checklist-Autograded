@@ -19,19 +19,18 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
 function validateInput(testInput) {
 
-let result;
-
     if (testInput === "") {
         return "Empty";
     }
-    else if (typeof(testInput) === "number") {
-        return "Is a number";
-    }
     else if (isNaN(testInput)) {
-        return "Is not a number";
+        return "Not a Number";
     }
+    else if (typeof(parseInt(testInput)) === "number") {
+        return "Is a Number";
+    }
+    
 }
-// console.log(validateInput(""));  This function on it's own seems to work
+console.log(validateInput("10"));  //This function on it's own seems to work
 
 
 // These below may need to go in other script file, not sure
@@ -45,8 +44,18 @@ let result;
 
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    
 
+    // list = document.getElementById("faultyItems");
+
+    // pilot = document.querySelector("input[name=pilotName]");
+    // copilot = document.querySelector("input[name=copilotName]");
+
+    // fuelLevel = document.querySelector("input[name=fuelLevel]");
+    // fuelLevel = parseInt(fuelLevel);
+
+    // cargoLevel = document.querySelector("input[name=cargoMass]");
+    // cargoLevel = parseInt(cargoLevel);
+    
     if (validateInput(pilot) === "Empty") {
         window.alert("All fields required!");
     }
@@ -60,30 +69,30 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     else if (validateInput(copilot) === "Empty") {
         window.alert("All fields required!");
     }
-    else if (validateInput(copilot) === "Is a number") {
+    else if (validateInput(copilot) === "Is a Number") {
         window.alert("is a number");
     }
-    else if (validateInput(copilot) === "Is not a number") {
+    else if (validateInput(copilot) === "Not a Number") {
 
     }
 
     else if (validateInput(fuelLevel) === "Empty") {
         window.alert("All fields required!");
     }
-    else if (validateInput(fuelLevel) === "Is not a number") {
-        window.alert("Is not a number");
+    else if (validateInput(fuelLevel) === "Not a Number") {
+        window.alert("Not a Number");
     }
-    else if (validateInput(fuelLevel) === "Is a number") {
+    else if (validateInput(fuelLevel) === "Is a Number") {
 
     }
 
     else if (validateInput(cargoLevel) === "Empty") {
         window.alert("All fields required!");
     }
-    else if (validateInput(cargoLevel) === "Is not a number") {
-        window.alert("Is not a number");
+    else if (validateInput(cargoLevel) === "Not a Number") {
+        window.alert("Not a Number");
     }
-    else if (validateInput(cargoLevel) === "Is a number") {
+    else if (validateInput(cargoLevel) === "Is a Number") {
         
     }
 }
