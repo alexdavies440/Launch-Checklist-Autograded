@@ -78,6 +78,13 @@ function checkFuelLevel(fuelLevel) {
         document.getElementById("launchStatus").style.color = "red";
     }
     // PROBABLY NEED IF STATEMENT FOR OVER 10000 HERE
+    else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel > 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
+        document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch"
+        document.getElementById("launchStatus").style.color = "green";
+    }
+
 }
 
 function checkCargoLevel(cargoLevel) {
@@ -93,18 +100,65 @@ function checkCargoLevel(cargoLevel) {
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
     }
-     //PROBABLY NEED IF STATEMENT FOR LESS THAN 10000 HERE
+    //PROBABLY NEED IF STATEMENT FOR LESS THAN 10000 HERE
+    else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel < 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+        document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch"
+        document.getElementById("launchStatus").style.color = "green";
+    }
 }
+// function finalCheck() {
+//     //May refactor this whole section and declare these variables globally to simplify above functions so i can pass them into this one
+//     let fuelStatus = document.getElementById("fuelStatus").innerHTML
+//     let cargoStatus = document.getElementById("cargoStatus").innerHTML;
+//     let launchStatus = document.getElementById("launchStatus").innerHTML;
+
+//     if (
+//         fuelStatus === "Fuel level high enough for launch" 
+//         && cargoStatus === "Cargo mass low enough for launch"
+//     ) {
+//         launchStatus = "Shuttle is Ready for Launch";
+//         launchStatus.style.color = "green";
+//     } 
+//     else {
+//         launchStatus = "Shuttle not ready for launch";
+//         launchStatus.style.color = "red";
+//     }
+
+// }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    
+    //Wondering if I'm supposed to update the list status within this function since it takes a document and a list?
     //document.body.style.backgroundColor = "aqua"; // To see if function is being passed
     console.log("formSubmission called");
+
+    function finalCheck(document, list) {
+        //May refactor this whole section and declare these variables globally to simplify above functions so i can pass them into this one
+        list = document.getElementById("faultyItems")
+        let fuelStatus = document.getElementById("fuelStatus").innerHTML
+        let cargoStatus = document.getElementById("cargoStatus").innerHTML;
+        let launchStatus = document.getElementById("launchStatus").innerHTML;
+    
+        if (
+            fuelStatus === "Fuel level high enough for launch" 
+            && cargoStatus === "Cargo mass low enough for launch"
+        ) {
+            launchStatus = "Shuttle is Ready for Launch";
+            launchStatus.style.color = "green";
+        } 
+        else {
+            launchStatus = "Shuttle not ready for launch";
+            launchStatus.style.color = "red";
+        }
+    
+    }
 
     checkPilot(pilot);
     checkCopilot(copilot);
     checkFuelLevel(fuelLevel);
     checkCargoLevel(cargoLevel);
+    finalCheck(document, list);
 
 }
 
