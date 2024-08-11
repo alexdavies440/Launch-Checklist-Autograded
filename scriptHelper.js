@@ -40,11 +40,10 @@ function isEmpty(pilot, copilot, fuelLevel, cargoLevel) {
         validateInput(copilot) === "Empty" ||
         validateInput(fuelLevel) === "Empty" ||
         validateInput(cargoLevel) === "Empty"
-    
     ) {
             window.alert("All fields required!");
         }
-    return "Empty";
+        return "Empty";
 }
 
 
@@ -115,9 +114,9 @@ function checkCargoLevel(cargoLevel) {
 }
 function checkStatus(document, list) {
     //May refactor this whole section and declare these variables globally to simplify above functions so i can pass them into this one
-    let fuelStatus = document.getElementById("fuelStatus").innerHTML;
-    let cargoStatus = document.getElementById("cargoStatus").innerHTML;
-    let launchStatus = document.getElementById("launchStatus").innerHTML;
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
+    let launchStatus = document.getElementById("launchStatus");
 
     if (fuelStatus === "Fuel level too low for launch" || cargoStatus === "Cargo mass too heavy for launch") {
         launchStatus = "Shuttle not ready for launch";

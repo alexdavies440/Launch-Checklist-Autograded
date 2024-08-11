@@ -12,10 +12,10 @@ window.addEventListener("load", function () {
         let copilot = document.querySelector("input[name=copilotName]").value;
 
         let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-        fuelLevel = parseInt(fuelLevel);
+        //fuelLevel = parseInt(fuelLevel); //Something about this causes isEmpty() function to fail for number fields
 
         let cargoLevel = document.querySelector("input[name=cargoMass]").value;
-        cargoLevel = parseInt(cargoLevel);
+        //cargoLevel = parseInt(cargoLevel);
 
         let list = document.getElementById("faultyItems");
         
