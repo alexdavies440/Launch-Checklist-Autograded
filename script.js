@@ -1,28 +1,34 @@
+// const { validateInput } = require("./scriptHelper"); Nice try VS Code!
+
+
+
 // Write your JavaScript code here!
-console.log("script.js loaded");
-
-// const scriptHelper = require('./scriptHelper.js');
-
-// let formSubmission = scriptHelper.formSubmission;
-
-// let status = document.getElementById("launchStatusCheck");
-// status.style.color = "green"; Does not seem to be responding to anything in this
-
 
 window.addEventListener("load", function () {
 
-    // window.alert("test"); //This did something
-    // let submitButton = window.getElementById("formSubmit"); commenting this out allows things below it to work
-    //window.alert("test"); //This did not do anything?
+    console.log("script.js loaded");
+    let pilot = document.querySelector("input[name=pilotName]").value;
+    let copilot = document.querySelector("input[name=copilotName]").value;
+    
+    let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+    fuelLevel = parseInt(fuelLevel);
+    
+    let cargoLevel = document.querySelector("input[name=cargoMass]").value;
+    cargoLevel = parseInt(cargoLevel);
+    
+    let list = document.getElementById("faultyItems");
+    
+    
     
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
-        // console.log("test submit");
-        formSubmission();
-        //document.body.style.backgroundColor = "red"; //Submit is working to change background red, formsubmission function is not yet
+    
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+        
         event.preventDefault();
 
     });
+    
     
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
@@ -34,6 +40,5 @@ window.addEventListener("load", function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
     })
-    
     
  });
