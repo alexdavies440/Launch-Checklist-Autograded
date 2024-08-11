@@ -68,14 +68,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     else if (validateInput(pilot) === "Not a Number") {
         
         let pilotStatus = document.getElementById("pilotStatus")
-        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`
-    }
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+        pilotStatus.style.visibility = "visible";
+    } // EVERYTHING BELOW THIS ISN'T HAPPENING BECAUSE THIS CASE IS TRUE, NEED TO FIGURE OUT HOW TO HAVE IT TEST EVERYTHING WITHOUT IT STOPPING. 
+      // MAYBE WRITE A FUNCTION TO TEST EACH STRING?
 
     
     
     else if (validateInput(copilot) === "Not a Number") {
         let copilotStatus = document.getElementById("copilotStatus");
-        copilotStatus = `Copilot ${copilot} is ready for launch`
+        copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
+        copilotStatus.style.visibility = "visible";
     }
 
     
