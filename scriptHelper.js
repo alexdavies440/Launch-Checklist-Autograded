@@ -34,55 +34,43 @@ let validated;
     return validated;
 };
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    
-    document.body.style.backgroundColor = "aqua"; // To see if function is being passed
-    console.log("test");
-
+// Functions to be used in formSubmission
+function checkPilot(pilot) {
     if (validateInput(pilot) === "Empty") {
         window.alert("All fields required!");
     }
-    else if (validateInput(copilot) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(fuelLevel) === "Empty") {
-        window.alert("All fields required!");
-    }
-    else if (validateInput(cargoLevel) === "Empty") {
-        window.alert("All fields required!");
-    }
-
     else if (validateInput(pilot) === "Is a Number") {
         window.alert("Cannot be a number");
+    }
+    else if (validateInput(pilot) === "Not a Number") {
+    
+        let pilotStatus = document.getElementById("pilotStatus")
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+        pilotStatus.style.visibility = "visible";
+    }
+}
+
+function checkCopilot(copilot) {
+    if (validateInput(copilot) === "Empty") {
+        window.alert("All fields required!");
     }
     else if (validateInput(copilot) === "Is a Number") {
         window.alert("Cannot be a number");
     }
-    else if (validateInput(fuelLevel) === "Not a Number") {
-        window.alert("Must be a number");
-    }
-    else if (validateInput(cargoLevel) === "Not a Number") {
-        window.alert("Must be a number");
-    }
-
-    else if (validateInput(pilot) === "Not a Number") {
-        
-        let pilotStatus = document.getElementById("pilotStatus")
-        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-        pilotStatus.style.visibility = "visible";
-    } // EVERYTHING BELOW THIS ISN'T HAPPENING BECAUSE THIS CASE IS TRUE, NEED TO FIGURE OUT HOW TO HAVE IT TEST EVERYTHING WITHOUT IT STOPPING. 
-      // MAYBE WRITE A FUNCTION TO TEST EACH STRING?
-
-    
-    
     else if (validateInput(copilot) === "Not a Number") {
         let copilotStatus = document.getElementById("copilotStatus");
         copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
         copilotStatus.style.visibility = "visible";
     }
+}
 
-    
-    
+function checkFuelLevel(fuelLevel) {
+    if (validateInput(fuelLevel) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(fuelLevel) === "Not a Number") {
+        window.alert("Must be a number");
+    }
     else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel < 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
@@ -90,16 +78,34 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.getElementById("launchStatus").style.color = "red";
     }
     // PROBABLY NEED IF STATEMENT FOR OVER 10000 HERE
-    
-    
+}
+
+function checkCargoLevel(cargoLevel) {
+    if (validateInput(cargoLevel) === "Empty") {
+        window.alert("All fields required!");
+    }
+    else if (validateInput(cargoLevel) === "Not a Number") {
+        window.alert("Must be a number");
+    }
     else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel > 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
         document.getElementById("launchStatus").style.color = "red";
     }
-    //PROBABLY NEED IF STATEMENT FOR LESS THAN 10000 HERE
+     //PROBABLY NEED IF STATEMENT FOR LESS THAN 10000 HERE
+}
+
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
+    //document.body.style.backgroundColor = "aqua"; // To see if function is being passed
+    console.log("formSubmission called");
+
+    checkPilot(pilot);
+    checkCopilot(copilot);
+    checkFuelLevel(fuelLevel);
+    checkCargoLevel(cargoLevel);
+
 }
 
 

@@ -1,12 +1,10 @@
-// const { validateInput } = require("./scriptHelper"); Nice try VS Code!
-
-
 
 // Write your JavaScript code here!
 
 window.addEventListener("load", function () {
 
     console.log("script.js loaded");
+
     let pilot = document.querySelector("input[name=pilotName]").value;
     let copilot = document.querySelector("input[name=copilotName]").value;
     
