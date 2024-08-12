@@ -51,7 +51,7 @@ function isEmpty(pilot, copilot, fuelLevel, cargoLevel) {
 function checkPilot(pilot) {
    
     if (validateInput(pilot) === "Is a Number") {
-        window.alert("Pilot cannot be a number");
+        //window.alert("Pilot cannot be a number");
         return "invalid";
     }
     else if (validateInput(pilot) === "Not a Number") {
@@ -64,7 +64,7 @@ function checkPilot(pilot) {
 function checkCopilot(copilot) {
    
     if (validateInput(copilot) === "Is a Number") {
-        window.alert("Copilot cannot be a number");
+        //window.alert("Copilot cannot be a number");
         return "invalid";
     }
     else if (validateInput(copilot) === "Not a Number") {
@@ -75,7 +75,7 @@ function checkCopilot(copilot) {
 
 function checkFuelLevel(fuelLevel) {
     if (validateInput(fuelLevel) === "Not a Number") {
-        window.alert("Fuel Level must be a number");
+        
         return "invalid";
     }
     else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel < 10000) {
@@ -90,7 +90,7 @@ function checkFuelLevel(fuelLevel) {
 function checkCargoLevel(cargoLevel) {
     
     if (validateInput(cargoLevel) === "Not a Number") {
-        window.alert("Cargo Mass must be a number");
+        
         return "invalid";
     }
     else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel > 10000) {
@@ -106,8 +106,8 @@ function updateList(pilot, copilot, fuelLevel, cargoLevel) {
 
     let pilotStatus = document.getElementById("pilotStatus")
     let copilotStatus = document.getElementById("copilotStatus");
-            
 
+    
     if (checkCopilot(pilot) === "valid") {
         pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
         pilotStatus.style.visibility = "visible";
@@ -143,6 +143,33 @@ function updateList(pilot, copilot, fuelLevel, cargoLevel) {
         document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
         document.getElementById("launchStatus").style.color = "red";
+    }
+    if (checkPilot(pilot) === "invalid") {
+        window.alert("Pilot cannot be a number");
+        pilotStatus.innerHTML = null;
+        document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+        document.getElementById("launchStatus").style.color = "";
+    }        
+    if (checkCopilot(copilot) === "invalid") {
+        window.alert("Copilot cannot be a number");
+        copilotStatus.innerHTML = null;
+        document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+        document.getElementById("launchStatus").style.color = "";
+
+    }
+    if (checkFuelLevel(fuelLevel) === "invalid") {
+        window.alert("Fuel Level must be a number");
+        document.getElementById("fuelStatus").innerHTML = null;
+        document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+        document.getElementById("launchStatus").style.color = "";
+
+    }
+    if (checkCargoLevel(cargoLevel) === "invalid") {
+        window.alert("Cargo Mass must be a number");
+        document.getElementById("cargoStatus").innerHTML = null;
+        document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+        document.getElementById("launchStatus").style.color = "";
+
     }
 }
 
