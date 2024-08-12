@@ -2,15 +2,10 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function () {
-
-    console.log("script.js loaded");
-
-    
-    
     
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
-
+        
         let pilot = document.querySelector("input[name=pilotName]").value;
         let copilot = document.querySelector("input[name=copilotName]").value;
         
@@ -21,7 +16,7 @@ window.addEventListener("load", function () {
         //cargoLevel = parseInt(cargoLevel);
         
         let list = document.getElementById("faultyItems");
-        
+ 
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
         
         event.preventDefault();

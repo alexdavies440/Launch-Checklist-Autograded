@@ -1,6 +1,4 @@
 // Write your helper functions here!
-console.log("scriptHelper.js loaded");
-
 
 require('cross-fetch/polyfill');
 
@@ -104,17 +102,13 @@ function checkCargoLevel(cargoLevel) {
 
 function updateList(pilot, copilot, fuelLevel, cargoLevel) {
 
-    let pilotStatus = document.getElementById("pilotStatus")
-    let copilotStatus = document.getElementById("copilotStatus");
-
-    
     if (checkCopilot(pilot) === "valid") {
-        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-        pilotStatus.style.visibility = "visible";
+        document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+        document.getElementById("pilotStatus").style.visibility = "visible";
     }
     if (checkCopilot(copilot) === "valid") {
-        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-        copilotStatus.style.visibility = "visible";
+        document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+        document.getElementById("copilotStatus").style.visibility = "visible";
     }
     // if (checkFuelLevel(fuelLevel) === "valid" && checkCargoLevel(cargoLevel) === "valid") {
     //     document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
@@ -146,13 +140,13 @@ function updateList(pilot, copilot, fuelLevel, cargoLevel) {
     }
     if (checkPilot(pilot) === "invalid") {
         window.alert("Pilot cannot be a number");
-        pilotStatus.innerHTML = null;
+        document.getElementById("pilotStatus").innerHTML = null;
         document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
         document.getElementById("launchStatus").style.color = "";
     }        
     if (checkCopilot(copilot) === "invalid") {
         window.alert("Copilot cannot be a number");
-        copilotStatus.innerHTML = null;
+        document.getElementById("copilotStatus").innerHTML = null;
         document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
         document.getElementById("launchStatus").style.color = "";
 
