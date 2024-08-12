@@ -113,10 +113,22 @@ function updateList(pilot, copilot, fuelLevel, cargoLevel) {
         pilotStatus.style.visibility = "visible";
     }
     if (checkCopilot(copilot) === "valid") {
-        copilotStatus.innerHTML = `Copilot ${copilot} is ready for launch`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
         copilotStatus.style.visibility = "visible";
     }
-    if (checkFuelLevel(fuelLevel) === "valid" && checkCargoLevel(cargoLevel) === "valid") {
+    // if (checkFuelLevel(fuelLevel) === "valid" && checkCargoLevel(cargoLevel) === "valid") {
+    //     document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
+    //     document.getElementById("launchStatus").style.color = "green";
+    // }
+    if (checkFuelLevel(fuelLevel) === "valid") {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
+        document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
+        document.getElementById("launchStatus").style.color = "green";
+    }
+    if (checkCargoLevel(cargoLevel) === "valid") {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
         document.getElementById("launchStatus").style.color = "green";
     }
