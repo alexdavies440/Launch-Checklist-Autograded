@@ -195,6 +195,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
  }
  
  function pickPlanet(planets) {
+    const pick = Math.floor(Math.random() * planets.length);
+    return planets[pick];
  }
  
  console.log("End of page")
