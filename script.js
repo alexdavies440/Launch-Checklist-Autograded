@@ -1,7 +1,6 @@
 
 // Write your JavaScript code here! 
 
-
 window.addEventListener("load", function () {
 
     let form = document.querySelector("form");
@@ -35,7 +34,16 @@ window.addEventListener("load", function () {
         //console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         console.log(listedPlanets);
-        console.log(pickPlanet(listedPlanets));
+        let destination = pickPlanet(listedPlanets);
+        
+        let name = destination.name;
+        let diameter = destination.diameter;
+        let star = destination.star;
+        let distance = destination.distance;
+        let moons = destination.moons;
+        let imageUrl = destination.image
+        
+        addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
         
     })
     
