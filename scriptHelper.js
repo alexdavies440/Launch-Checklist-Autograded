@@ -97,86 +97,22 @@ function checkCargoLevel(cargoLevel) {
     else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel < 10000) {
         return "valid";
     }
-}
-
-function updateList(pilot, copilot, fuelLevel, cargoLevel) {
-
-    // if (checkCopilot(pilot) === "valid") {
-    //     document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-    //     document.getElementById("pilotStatus").style.visibility = "visible";
-    // }
-    // if (checkCopilot(copilot) === "valid") {
-    //     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-    //     document.getElementById("copilotStatus").style.visibility = "visible";
-    // }
-    // // if (checkFuelLevel(fuelLevel) === "valid" && checkCargoLevel(cargoLevel) === "valid") {
-    // //     document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
-    // //     document.getElementById("launchStatus").style.color = "green";
-    // // }
-    // if (checkFuelLevel(fuelLevel) === "valid") {
-    //     list.style.visibility = "visible";
-    //     document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
-    //     document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
-    //     document.getElementById("launchStatus").style.color = "green";
-    // }
-    // if (checkCargoLevel(cargoLevel) === "valid") {
-    //     list.style.visibility = "visible";
-    //     document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
-    //     document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
-    //     document.getElementById("launchStatus").style.color = "green";
-    // }
-    // if (checkFuelLevel(fuelLevel) === "insuficient") {
-    //     list.style.visibility = "visible";
-    //     document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
-    //     document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
-    //     document.getElementById("launchStatus").style.color = "red";
-    // }
-    // if (checkCargoLevel(cargoLevel) === "insuficient") {
-    //     list.style.visibility = "visible";
-    //     document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
-    //     document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
-    //     document.getElementById("launchStatus").style.color = "red";
-    // }
-    // if (checkPilot(pilot) === "invalid") {
-    //     window.alert("Pilot cannot be a number");
-    //     document.getElementById("pilotStatus").innerHTML = null;
-    //     document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-    //     document.getElementById("launchStatus").style.color = "";
-    // }        
-    // if (checkCopilot(copilot) === "invalid") {
-    //     window.alert("Copilot cannot be a number");
-    //     document.getElementById("copilotStatus").innerHTML = null;
-    //     document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-    //     document.getElementById("launchStatus").style.color = "";
-
-    // }
-    // if (checkFuelLevel(fuelLevel) === "invalid") {
-    //     window.alert("Fuel Level must be a number");
-    //     document.getElementById("fuelStatus").innerHTML = null;
-    //     document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-    //     document.getElementById("launchStatus").style.color = "";
-
-    // }
-    // if (checkCargoLevel(cargoLevel) === "invalid") {
-    //     window.alert("Cargo Mass must be a number");
-    //     document.getElementById("cargoStatus").innerHTML = null;
-    //     document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-    //     document.getElementById("launchStatus").style.color = "";
-
-    // }
-}
+};
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
     console.log("formSubmission called");
 
     if (isEmpty(pilot, copilot, fuelLevel, cargoLevel) === "proceed") {
-        checkPilot(pilot);
-        checkCopilot(copilot);
-        checkFuelLevel(fuelLevel);
-        checkCargoLevel(cargoLevel)
 
-        //updateList(pilot, copilot, fuelLevel, cargoLevel);
+        //These are probably not necessary:
+        
+        // checkPilot(pilot);
+        // checkCopilot(copilot);
+        // checkFuelLevel(fuelLevel);
+        // checkCargoLevel(cargoLevel);
+
+        
 
         // PLACING CONTENTS OF UPDATELIST DIRECTLY HERE FIXED AUTOGRADER. I'M GUESSING IT WAS LOOKING FOR LIST WHICH WASN'T DIRECTLY CALLED BECAUSE IT WAS INSIDE ANOTHER FUNCTION
         if (checkCopilot(pilot) === "valid") {
@@ -244,16 +180,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
     }
     
-}
+};
 
 
 
  async function myFetch() {
      let planetsReturned;
  
-     planetsReturned = await fetch().then( function(response) {
-         });
- 
+     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
+         return response.json();
+     });
+
      return planetsReturned;
  }
  
