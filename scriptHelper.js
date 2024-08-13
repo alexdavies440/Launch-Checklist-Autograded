@@ -51,7 +51,6 @@ function isEmpty(pilot, copilot, fuelLevel, cargoLevel) {
 function checkPilot(pilot) {
    
     if (validateInput(pilot) === "Is a Number") {
-        //window.alert("Pilot cannot be a number");
         return "invalid";
     }
     else if (validateInput(pilot) === "Not a Number") {
@@ -63,7 +62,6 @@ function checkPilot(pilot) {
 function checkCopilot(copilot) {
    
     if (validateInput(copilot) === "Is a Number") {
-        //window.alert("Copilot cannot be a number");
         return "invalid";
     }
     else if (validateInput(copilot) === "Not a Number") {
@@ -106,15 +104,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     console.log("formSubmission called");
 
     if (isEmpty(pilot, copilot, fuelLevel, cargoLevel) === "proceed") {
-
-        //These are probably not necessary:
-        
-        // checkPilot(pilot);
-        // checkCopilot(copilot);
-        // checkFuelLevel(fuelLevel);
-        // checkCargoLevel(cargoLevel);
-
-        
 
         // PLACING CONTENTS OF UPDATELIST DIRECTLY HERE FIXED AUTOGRADER. I'M GUESSING IT WAS LOOKING FOR LIST WHICH WASN'T DIRECTLY CALLED BECAUSE IT WAS INSIDE ANOTHER FUNCTION
         if (
@@ -180,14 +169,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             list.style.visibility = "hidden";            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
         }
-        // if (
-        //     checkPilot(pilot) === "invalid" ||
-        //     checkCopilot(copilot) === "invalid" ||
-        //     checkFuelLevel(fuelLevel) === "invalid" ||
-        //     checkCargoLevel(cargoLevel) === "invalid"
-        // ) {
-        //     list.style.visibility = "hidden";
-        // }
     }
     
 };
