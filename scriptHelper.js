@@ -33,7 +33,6 @@ function validateInput(testInput) {
     }
 };
 
-// Functions to be used in formSubmission
 function isEmpty(pilot, copilot, fuelLevel, cargoLevel) {
     if (
         validateInput(pilot) === "Empty" ||
@@ -101,11 +100,12 @@ function checkCargoLevel(cargoLevel) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     
-    console.log("formSubmission called");
+    document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+    document.getElementById("launchStatus").style.color = "";
+    list.style.visibility = "hidden";
 
     if (isEmpty(pilot, copilot, fuelLevel, cargoLevel) === "proceed") {
 
-        // PLACING CONTENTS OF UPDATELIST DIRECTLY HERE FIXED AUTOGRADER. I'M GUESSING IT WAS LOOKING FOR LIST WHICH WASN'T DIRECTLY CALLED BECAUSE IT WAS INSIDE ANOTHER FUNCTION
         if (
             checkPilot(pilot) === "valid" &&
             checkCopilot(copilot) === "valid" &&
@@ -115,32 +115,34 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             list.style.visibility = "visible"
         }
         if (checkCopilot(pilot) === "valid") {
+
             document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
-            //document.getElementById("pilotStatus").style.visibility = "visible";
         }
         if (checkCopilot(copilot) === "valid") {
+
             document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-            //document.getElementById("copilotStatus").style.visibility = "visible";
         }
         if (checkFuelLevel(fuelLevel) === "valid") {
-            //list.style.visibility = "visible";
+        
             document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
             document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
             document.getElementById("launchStatus").style.color = "green";
         }
         if (checkCargoLevel(cargoLevel) === "valid") {
-            //list.style.visibility = "visible";
+            
             document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
             document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
             document.getElementById("launchStatus").style.color = "green";
         }
         if (checkFuelLevel(fuelLevel) === "insuficient") {
+
             list.style.visibility = "visible";
             document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
             document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"
             document.getElementById("launchStatus").style.color = "red";
         }
         if (checkCargoLevel(cargoLevel) === "insuficient") {
+
             list.style.visibility = "visible";
             document.getElementById("cargoStatus").innerHTML = "Cargo mass too heavy for launch";
             document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
@@ -149,24 +151,28 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         if (checkPilot(pilot) === "invalid") {
             window.alert("Pilot cannot be a number");
-            list.style.visibility = "hidden";            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+            list.style.visibility = "hidden";            
+            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
         }        
         if (checkCopilot(copilot) === "invalid") {
             window.alert("Copilot cannot be a number");
-            list.style.visibility = "hidden";            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+            list.style.visibility = "hidden";            
+            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
     
         }
         if (checkFuelLevel(fuelLevel) === "invalid") {
             window.alert("Fuel Level must be a number");
-            list.style.visibility = "hidden";            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+            list.style.visibility = "hidden";            
+            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
     
         }
         if (checkCargoLevel(cargoLevel) === "invalid") {
             window.alert("Cargo Mass must be a number");
-            list.style.visibility = "hidden";            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
+            list.style.visibility = "hidden";            
+            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
         }
     }
