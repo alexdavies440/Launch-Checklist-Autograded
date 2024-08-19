@@ -1,10 +1,9 @@
-// Write your helper functions here!
 
 require('cross-fetch/polyfill');
 
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
+
     document.getElementById("missionTarget").innerHTML = 
                  `
                  <h2>Mission Destination</h2>
@@ -17,7 +16,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="${imageUrl}">
                  `;
-    
  }
  
 function validateInput(testInput) {
@@ -53,7 +51,6 @@ function checkPilot(pilot) {
         return "invalid";
     }
     else if (validateInput(pilot) === "Not a Number") {
-    
         return "valid";
     }
 }
@@ -64,18 +61,15 @@ function checkCopilot(copilot) {
         return "invalid";
     }
     else if (validateInput(copilot) === "Not a Number") {
-        
         return "valid";
     }
 }
 
 function checkFuelLevel(fuelLevel) {
     if (validateInput(fuelLevel) === "Not a Number") {
-        
         return "invalid";
     }
     else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel < 10000) {
-        
         return "insuficient";
     }
     else if (validateInput(fuelLevel) === "Is a Number" && fuelLevel >= 10000) {
@@ -86,11 +80,9 @@ function checkFuelLevel(fuelLevel) {
 function checkCargoLevel(cargoLevel) {
     
     if (validateInput(cargoLevel) === "Not a Number") {
-        
         return "invalid";
     }
     else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel > 10000) {
-        
         return "insuficient";
     }
     else if (validateInput(cargoLevel) === "Is a Number" && cargoLevel < 10000) {
@@ -113,26 +105,27 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             checkCargoLevel(cargoLevel) === "valid"
         ) {
             list.style.visibility = "visible"
+            document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
+            document.getElementById("launchStatus").style.color = "green";
         }
+        
         if (checkCopilot(pilot) === "valid") {
-
+            list.style.visibility = "visible"
             document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
         }
         if (checkCopilot(copilot) === "valid") {
-
+            list.style.visibility = "visible"
             document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
         }
         if (checkFuelLevel(fuelLevel) === "valid") {
-        
+
+            list.style.visibility = "visible"
             document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
-            document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
-            document.getElementById("launchStatus").style.color = "green";
         }
         if (checkCargoLevel(cargoLevel) === "valid") {
             
+            list.style.visibility = "visible"
             document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
-            document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
-            document.getElementById("launchStatus").style.color = "green";
         }
         if (checkFuelLevel(fuelLevel) === "insuficient") {
 
@@ -149,37 +142,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             document.getElementById("launchStatus").style.color = "red";
         }
 
-        if (checkPilot(pilot) === "invalid") {
-            window.alert("Pilot cannot be a number");
-            list.style.visibility = "hidden";            
-            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-            document.getElementById("launchStatus").style.color = "";
-        }        
-        if (checkCopilot(copilot) === "invalid") {
-            window.alert("Copilot cannot be a number");
-            list.style.visibility = "hidden";            
-            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-            document.getElementById("launchStatus").style.color = "";
-    
-        }
-        if (checkFuelLevel(fuelLevel) === "invalid") {
-            window.alert("Fuel Level must be a number");
-            list.style.visibility = "hidden";            
-            document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
-            document.getElementById("launchStatus").style.color = "";
-    
-        }
-        if (checkCargoLevel(cargoLevel) === "invalid") {
-            window.alert("Cargo Mass must be a number");
+        if (
+            checkPilot(pilot) === 'invalid' ||
+            checkCopilot(copilot) === 'invalid' ||
+            checkFuelLevel(fuelLevel) === 'invalid' ||
+            checkCargoLevel(cargoLevel) === 'invalid'
+        ) {
+            window.alert("Make sure to enter valid information for each field!");
             list.style.visibility = "hidden";            
             document.getElementById("launchStatus").innerHTML = "Awaiting Information Before Launch";
             document.getElementById("launchStatus").style.color = "";
         }
     }
-    
 };
-
-
 
  async function myFetch() {
      let planetsReturned;

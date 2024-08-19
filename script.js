@@ -25,13 +25,12 @@ window.addEventListener("load", function () {
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
+
     listedPlanetsResponse.then(function (result) {
-        listedPlanets = result;
-        
+    listedPlanets = result;
     }).then(function () {
-       
-        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        console.log(listedPlanets);
+       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+        
         let destination = pickPlanet(listedPlanets);
         
         let name = destination.name;
@@ -42,7 +41,5 @@ window.addEventListener("load", function () {
         let imageUrl = destination.image
         
         addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
-        
     })
-    
  });
