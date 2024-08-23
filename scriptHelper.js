@@ -42,7 +42,7 @@ function checkCargoLevel(cargoLevel) {
     if (cargoLevel > 10000) {
         return "Insufficient";
     }
-    else if (cargoLevel < 10000) {
+    else if (cargoLevel <= 10000) {
         return "Sufficient";
     }
 }
